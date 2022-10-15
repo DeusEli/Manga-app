@@ -1,13 +1,13 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { Text, View } from "react-native";
+import { FlatList, Text, View, SafeAreaView } from "react-native";
+import AnimeList from "./src/components/animeList";
 // import ./src/tailwindcss-react-native.d.ts;
 
 export default function App() {
   return (
-    <View className="flex-1 items-center justify-center bg-white">
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView className="flex-col mt-10 ml-6">
+      <AnimeList />
+    </SafeAreaView>
   );
 }
