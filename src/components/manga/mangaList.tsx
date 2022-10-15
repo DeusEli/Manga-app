@@ -16,8 +16,8 @@ export default function MangaList() {
   }, []);
 
   return (
-    <View className="flex flex-col items-center">
-      <Text className="text-white text-2xl">MANGAS</Text>
+    <View className="flex flex-col items-center mt-8">
+      <Text className="text-white text-2xl mb-4">MANGAS</Text>
       <FlatList
         horizontal={true}
         data={manga}

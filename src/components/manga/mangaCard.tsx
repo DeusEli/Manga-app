@@ -34,6 +34,10 @@ export default function MangaCard({ manga }: Props) {
               : "N/A"}
           </Text>
         </View>
+        <View className="flex flex-row">
+          <Text className="text-sm font-bold text-white pr-1">ID:</Text>
+          <Text className="text-sm text-white">{manga.id}</Text>
+        </View>
       </View>
     </View>
   );
