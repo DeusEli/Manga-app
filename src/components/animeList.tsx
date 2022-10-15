@@ -17,7 +17,7 @@ export default function AnimeList() {
 
   return (
     <View className="flex flex-col items-center">
-      <Text className="text-black text-2xl">ANIMES</Text>
+      <Text className="text-white text-2xl">ANIMES</Text>
       <FlatList
         horizontal={true}
         data={anime}
