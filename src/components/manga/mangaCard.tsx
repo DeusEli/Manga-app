@@ -1,13 +1,22 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Pressable } from "react-native";
 
 interface Props {
   manga: {};
 }
 
 export default function MangaCard({ manga }: Props) {
+  const navigation = useNavigation();
+
   return (
-    <View className="flex flex-row items-start w-50 p-3 bg-slate-800 border m-2 rounded-2xl">
+    <Pressable
+      className="flex flex-row items-start w-50 p-3 bg-slate-800 border m-2 rounded-2xl"
+      onPress={() => {
+        //console.log(anime.attributes.canonicalTitle);
+        navigation.navigate("MangaInfo", { selectedAnime: manga });
+      }}
+    >
       <Image
         className="w-40 h-40 rounded-lg"
         source={{ uri: manga.attributes.posterImage.small }}
@@ -39,6 +48,6 @@ export default function MangaCard({ manga }: Props) {
           <Text className="text-sm text-white">{manga.id}</Text>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 }

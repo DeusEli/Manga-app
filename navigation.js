@@ -9,6 +9,7 @@ import SearchAnimeScreen from "./src/screens/searchAnime";
 import SearchMangaScreen from "./src/screens/searchManga";
 import FavoritesScreen from "./src/screens/favorites";
 import AnimeInfo from "./src/screens/animeInfo";
+import MangaInfo from "./src/screens/mangaInfo";
 import HomeScreen from "./src/screens/home";
 
 const infoStackNavigator = createNativeStackNavigator();
@@ -24,6 +25,11 @@ function MyStack() {
       <infoStackNavigator.Screen
         name="AnimeInfo"
         component={AnimeInfo}
+        options={{ headerShown: false }}
+      />
+      <infoStackNavigator.Screen
+        name="MangaInfo"
+        component={MangaInfo}
         options={{ headerShown: false }}
       />
     </infoStackNavigator.Navigator>
