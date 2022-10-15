@@ -1,13 +1,22 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Pressable } from "react-native";
 //add props
 interface Props {
   anime: {};
 }
 
 export default function AnimeCard({ anime }: Props) {
+  const navigation = useNavigation();
+
   return (
-    <View className="flex flex-row items-start p-3 bg-slate-800 border m-2 rounded-2xl">
+    <Pressable
+      className="flex flex-row items-start p-3 bg-slate-800 border m-2 rounded-2xl"
+      onPress={() => {
+        //console.log(anime.attributes.canonicalTitle);
+        navigation.navigate("AnimeInfo", { selectedAnime: anime });
+      }}
+    >
       <Image
         className="w-40 h-40 rounded-lg"
         source={{ uri: anime.attributes.posterImage.small }}
@@ -40,6 +49,6 @@ export default function AnimeCard({ anime }: Props) {
           <Text className="text-sm text-white">{anime.id}</Text>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 }
