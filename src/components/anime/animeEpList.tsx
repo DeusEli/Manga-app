@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FlatList, Text, View, SafeAreaView } from "react-native";
-import AnimeCard from "./animeCard";
+import { FlatList, View } from "react-native";
 import AnimeEpCard from "./animeEpCard";
 
 interface Props {

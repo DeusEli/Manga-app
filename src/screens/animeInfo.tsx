@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, Text, View, SafeAreaView, Image } from "react-native";
+import { Text, View, SafeAreaView, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import AnimeEpList from "../components/anime/animeEpList";
 
