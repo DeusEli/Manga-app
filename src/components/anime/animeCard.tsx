@@ -11,43 +11,23 @@ export default function AnimeCard({ anime }: Props) {
 
   return (
     <Pressable
-      className="flex flex-row items-start p-3 bg-slate-800 border m-2 rounded-2xl"
+      className="flex flex-row items-start bg-slate-800 border m-2 mr-8 rounded-2xl"
       onPress={() => {
         //console.log(anime.attributes.canonicalTitle);
         navigation.navigate("AnimeInfo", { selectedAnime: anime });
       }}
     >
       <Image
-        className="w-40 h-40 rounded-lg"
+        className="w-40 h-60 rounded-lg"
         source={{ uri: anime.attributes.posterImage.small }}
       />
       <View
-        className="flex flex-col h-max justify-center pl-2 w-48"
+        className="flex flex-col w-full justify-center absolute left-2 bottom-0 pr-2"
         //style={{ maxWidth: "50%" }}
       >
         <Text className="text-xl font-bold text-white flex-wrap">
           {anime.attributes.canonicalTitle}
         </Text>
-        <View className="flex flex-row">
-          <Text className="text-sm font-bold text-white pr-1">- Status:</Text>
-          <Text className="text-sm text-white">{anime.attributes.status}</Text>
-        </View>
-        <View className="flex flex-row">
-          <Text className="text-sm font-bold text-white pr-1">- Episodes:</Text>
-          <Text className="text-sm text-white">
-            {anime.attributes.episodeCount}
-          </Text>
-        </View>
-        <View className="flex flex-row">
-          <Text className="text-sm font-bold text-white pr-1">- Rating:</Text>
-          <Text className="text-sm font-bold text-yellow-400">
-            {anime.attributes.averageRating}
-          </Text>
-        </View>
-        <View className="flex flex-row">
-          <Text className="text-sm font-bold text-white pr-1">- ID:</Text>
-          <Text className="text-sm text-white">{anime.id}</Text>
-        </View>
       </View>
     </Pressable>
   );

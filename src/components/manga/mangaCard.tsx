@@ -11,42 +11,23 @@ export default function MangaCard({ manga }: Props) {
 
   return (
     <Pressable
-      className="flex flex-row items-start w-50 p-3 bg-slate-800 border m-2 rounded-2xl"
+      className="flex flex-row items-start m-2 mr-8 bg-slate-800 border rounded-2xl"
       onPress={() => {
         //console.log(anime.attributes.canonicalTitle);
         navigation.navigate("MangaInfo", { selectedAnime: manga });
       }}
     >
       <Image
-        className="w-40 h-40 rounded-lg"
+        className="w-40 h-60 rounded-lg"
         source={{ uri: manga.attributes.posterImage.small }}
       />
-      <View className="flex flex-col h-max justify-center pl-2">
-        <Text className="text-xl font-bold text-white">
+      <View
+        className="flex flex-col w-full justify-center absolute left-2 bottom-0 pr-2"
+        //style={{ maxWidth: "50%" }}
+      >
+        <Text className="text-xl font-bold text-white flex-wrap">
           {manga.attributes.canonicalTitle}
         </Text>
-        <View className="flex flex-row">
-          <Text className="text-sm font-bold text-white pr-1">Status:</Text>
-          <Text className="text-sm text-white">{manga.attributes.status}</Text>
-        </View>
-        <View className="flex flex-row">
-          <Text className="text-sm font-bold text-white pr-1">Volumes:</Text>
-          <Text className="text-sm text-white">
-            {manga.attributes.volumeCount}
-          </Text>
-        </View>
-        <View className="flex flex-row">
-          <Text className="text-sm font-bold text-white pr-1">Rating:</Text>
-          <Text className="text-sm font-bold text-yellow-400">
-            {manga.attributes.averageRating
-              ? manga.attributes.averageRating
-              : "N/A"}
-          </Text>
-        </View>
-        <View className="flex flex-row">
-          <Text className="text-sm font-bold text-white pr-1">ID:</Text>
-          <Text className="text-sm text-white">{manga.id}</Text>
-        </View>
       </View>
     </Pressable>
   );
