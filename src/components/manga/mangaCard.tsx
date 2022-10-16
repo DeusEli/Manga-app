@@ -22,7 +22,7 @@ export default function MangaCard({ manga }: Props) {
         source={{ uri: manga.attributes.posterImage.small }}
       />
       <View
-        className="flex flex-col w-full justify-center absolute left-2 bottom-0 pr-2"
+        className="flex flex-col w-full justify-center bg-black border-2 border-t-0 border-stone-900 absolute left-0 pl-2 bottom-0 pr-2"
         //style={{ maxWidth: "50%" }}
       >
         <Text className="text-xl font-bold text-white flex-wrap">

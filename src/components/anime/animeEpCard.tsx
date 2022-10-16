@@ -9,7 +9,7 @@ interface Props {
 export default function AnimeEpCard({ episode }: Props) {
   return (
     <View>
-      <View className="flex flex-row items-start p-3 bg-slate-900 border m-2 rounded-2xl">
+      <View className="flex flex-row items-start p-3 bg-stone-900 border m-2 rounded-2xl">
         <Image
           className="w-20 h-20 rounded-lg text-white"
           source={{
@@ -50,7 +50,7 @@ export default function AnimeEpCard({ episode }: Props) {
                   : "1"}
               </Text>
             </View>
-            <Text className="text-gray-500"> --- </Text>
+            <Text className="text-gray-500"> - </Text>
             <View className="flex flex-row">
               <Text className="text-sm font-bold text-gray-500 italic pr-1">
                 Episode
@@ -63,7 +63,7 @@ export default function AnimeEpCard({ episode }: Props) {
 
           <View className="flex flex-row">
             <Text className="text-sm font-bold text-gray-500 italic pr-1">
-              Release
+              Release:
             </Text>
             <Text className="text-sm font-bold text-gray-500">
               {episode.attributes.airdate ? episode.attributes.airdate : "N/A"}
