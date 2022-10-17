@@ -1,10 +1,19 @@
 import React from "react";
-import { Text, View, SafeAreaView, Image } from "react-native";
+import {
+  Text,
+  View,
+  SafeAreaView,
+  Image,
+  Linking,
+  Button,
+  Pressable,
+} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import AnimeEpList from "../components/anime/animeEpList";
 
 const AnimeInfo = ({ route }) => {
   const selectedAnimeData = route.params.selectedAnime;
+  const ytTrailer = selectedAnimeData.attributes.youtubeVideoId;
 
   // console.log(route.params.selectedAnime.attributes.canonicalTitle);
   // console.log("ola");
@@ -64,6 +73,25 @@ const AnimeInfo = ({ route }) => {
           <Text className="text-white text-xs">
             {selectedAnimeData.attributes.synopsis}
           </Text>
+        </View>
+        {/* Youtube Trailer */}
+        <View className="p-4">
+          {/* <Button
+            className="text-white text-xs"
+            style={{}}
+            title="Watch Trailer on Youtube"
+            onPress={() => {
+              Linking.openURL("https://www.youtube.com/watch?v=" + ytTrailer);
+            }}
+          /> */}
+          <Pressable
+            className="bg-red-900 flex items-center w-52 self-center rounded-2xl p-4"
+            onPress={() => {
+              Linking.openURL("https://www.youtube.com/watch?v=" + ytTrailer);
+            }}
+          >
+            <Text className="text-white text-xl">Trailer on Youtube</Text>
+          </Pressable>
         </View>
         {/* Episodes */}
         <View className="p-4">
