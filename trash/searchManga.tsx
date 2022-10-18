@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, FlatList } from "react-native";
-import MangaSearchCard from "../components/manga/mangaSearchCard";
+import MangaSearchCard from "./mangaSearchCard";
 
 const SearchMangaScreen = () => {
   const [manga, setManga] = useState([]);

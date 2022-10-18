@@ -1,19 +1,49 @@
-import React from "react";
+import { Ionicons } from "@expo/vector-icons";
+import React, { useState } from "react";
 import {
   Text,
   View,
   SafeAreaView,
   Image,
   Linking,
-  Button,
   Pressable,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import AnimeEpList from "../components/anime/animeEpList";
+import {
+  addFavorite,
+  removeFavorite,
+} from "../features/favorites/favoriteSlice";
+import { useDispatch, useSelector } from "react-redux";
 
-const AnimeInfo = ({ route }) => {
+interface Props {
+  route: any;
+}
+
+const AnimeInfo = ({ route }: Props) => {
   const selectedAnimeData = route.params.selectedAnime;
   const ytTrailer = selectedAnimeData.attributes.youtubeVideoId;
+  const [color, setColor] = useState("gray");
+  const dispatch = useDispatch();
+  const favoriteState = useSelector((state) => state.favorites);
+
+  const favoriteAlready = favoriteState.find(
+    (favorite) => favorite.id === selectedAnimeData.id
+  );
+
+  if (favoriteAlready && color === "gray") {
+    setColor("red");
+  }
+
+  const handleFavorite = () => {
+    setColor("red");
+    dispatch(addFavorite(selectedAnimeData));
+  };
+
+  const handleUnfavorite = (id: string) => {
+    setColor("gray");
+    dispatch(removeFavorite(id));
+  };
 
   // console.log(route.params.selectedAnime.attributes.canonicalTitle);
   // console.log("ola");
@@ -31,13 +61,30 @@ const AnimeInfo = ({ route }) => {
           /> */}
         </View>
         {/* Names */}
-        <View className="pl-4">
-          <Text className="text-white text-4xl">
-            {selectedAnimeData.attributes.canonicalTitle}
-          </Text>
-          <Text className="text-slate-300 text-2xl pt-2">
-            {selectedAnimeData.attributes.titles.ja_jp}
-          </Text>
+        <View className="flex flex-row">
+          <View className="pl-4">
+            <Text className="text-white text-4xl">
+              {selectedAnimeData.attributes.canonicalTitle}
+            </Text>
+            <Text className="text-slate-300 text-2xl pt-2">
+              {selectedAnimeData.attributes.titles.ja_jp}
+            </Text>
+          </View>
+          {/* Add to favorites */}
+          <Pressable
+            className="flex-1 flex flex-row justify-end items-center pr-4"
+            onPress={() => {
+              if (color == "gray") {
+                handleFavorite();
+              } else if (color == "red") {
+                handleUnfavorite(selectedAnimeData.id);
+              }
+            }}
+          >
+            <Text>
+              <Ionicons name="heart" size={38} color={color} />
+            </Text>
+          </Pressable>
         </View>
         {/* Rating */}
         <View className="pl-4">

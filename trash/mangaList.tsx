@@ -2,17 +2,20 @@ import React, { useState, useEffect } from "react";
 import { FlatList, Text, View } from "react-native";
 import MangaCard from "./mangaCard";
 
-export default function MangaList() {
+export default function MangaList(txt: string) {
   const [manga, setManga] = useState([]);
+  const filter = txt;
 
-  const loadManga = async () => {
-    const response = await fetch("https://kitsu.io/api/edge/manga");
+  const loadManga = async (filter) => {
+    const params = !!filter ? `?filter[text]=${filter}` : "";
+    const response = await fetch("https://kitsu.io/api/edge/manga" + params);
     const data = await response.json();
+    console.log(params);
     setManga(data.data);
   };
 
   useEffect(() => {
-    loadManga();
+    loadManga("");
   }, []);
 
   return (

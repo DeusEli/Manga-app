@@ -4,9 +4,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Ionicons from "@expo/vector-icons/Ionicons";
 //screens
-import Home from "./src/screens/home";
-import SearchAnimeScreen from "./src/screens/searchAnime";
-import SearchMangaScreen from "./src/screens/searchManga";
 import FavoritesScreen from "./src/screens/favorites";
 import AnimeInfo from "./src/screens/animeInfo";
 import MangaInfo from "./src/screens/mangaInfo";
@@ -50,24 +47,6 @@ function MyTabs() {
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" size={size} color={color} />
-          ),
-        }}
-      />
-      <tab.Screen
-        name="Search Anime"
-        component={SearchAnimeScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="search" size={size} color={color} />
-          ),
-        }}
-      />
-      <tab.Screen
-        name="Search Manga"
-        component={SearchMangaScreen}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="search" size={size} color={color} />
           ),
         }}
       />

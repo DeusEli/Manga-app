@@ -6,7 +6,7 @@ interface Props {
   anime: {};
 }
 
-export default function AnimeSearchCard({ anime }: Props) {
+export default function AnimeFavCard({ anime }: Props) {
   return (
     <View>
       <View className="flex flex-row items-start bg-black border-4 items-center border-stone-900 m-2 rounded-2xl">

@@ -3,7 +3,7 @@ import React from "react";
 import { View, Text, Image, Pressable } from "react-native";
 //add props
 interface Props {
-  anime: {};
+  anime: any;
 }
 
 export default function AnimeCard({ anime }: Props) {
