@@ -1,20 +1,32 @@
 import React from "react";
 import { View, Text, FlatList } from "react-native";
 import { useSelector } from "react-redux";
-import AnimeFavCard from "../components/anime/animeFavCard";
+import AnimeCard from "../components/anime/animeCard";
 
 const FavoritesScreen = () => {
-  const favoriteState = useSelector((state) => state.favorites);
-  console.log(favoriteState);
+  const favoriteAnimeState = useSelector((state) => state.favoriteAnimes);
+  const favoriteMangaState = useSelector((state) => state.favoriteMangas);
 
   return (
-    <View className="flex flex-col items-start pl-1 scroll-pr-10 h-full bg-black">
-      <FlatList
-        className="w-full"
-        horizontal={false}
-        data={favoriteState}
-        renderItem={({ item }) => <AnimeFavCard anime={item} />}
-      />
+    <View className="flex-col h-full pt-2 bg-black">
+      <View className="flex flex-col items-center">
+        <Text className="text-white text-2xl pb-4">FAVORITE ANIMES:</Text>
+        <FlatList
+          className="w-full"
+          horizontal={true}
+          data={favoriteAnimeState}
+          renderItem={({ item }) => <AnimeCard anime={item} />}
+        />
+      </View>
+      <View className="flex flex-col items-center mt-4">
+        <Text className="text-white text-2xl pb-4">FAVORITE MANGAS:</Text>
+        <FlatList
+          className="w-full"
+          horizontal={true}
+          data={favoriteMangaState}
+          renderItem={({ item }) => <AnimeCard anime={item} />}
+        />
+      </View>
     </View>
   );
 };

@@ -11,9 +11,9 @@ import {
 import { ScrollView } from "react-native-gesture-handler";
 import AnimeEpList from "../components/anime/animeEpList";
 import {
-  addFavorite,
-  removeFavorite,
-} from "../features/favorites/favoriteSlice";
+  addFavoriteAnime,
+  removeFavoriteAnime,
+} from "../features/favoriteAnimes/favoriteAnimeSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 interface Props {
@@ -25,7 +25,7 @@ const AnimeInfo = ({ route }: Props) => {
   const ytTrailer = selectedAnimeData.attributes.youtubeVideoId;
   const [color, setColor] = useState("gray");
   const dispatch = useDispatch();
-  const favoriteState = useSelector((state) => state.favorites);
+  const favoriteState = useSelector((state) => state.favoriteAnimes);
 
   const favoriteAlready = favoriteState.find(
     (favorite) => favorite.id === selectedAnimeData.id
@@ -33,16 +33,17 @@ const AnimeInfo = ({ route }: Props) => {
 
   if (favoriteAlready && color === "gray") {
     setColor("red");
+    console.log("favoriteAlready");
   }
 
   const handleFavorite = () => {
     setColor("red");
-    dispatch(addFavorite(selectedAnimeData));
+    dispatch(addFavoriteAnime(selectedAnimeData));
   };
 
   const handleUnfavorite = (id: string) => {
     setColor("gray");
-    dispatch(removeFavorite(id));
+    dispatch(removeFavoriteAnime(id));
   };
 
   // console.log(route.params.selectedAnime.attributes.canonicalTitle);
@@ -62,7 +63,7 @@ const AnimeInfo = ({ route }: Props) => {
         </View>
         {/* Names */}
         <View className="flex flex-row">
-          <View className="pl-4">
+          <View className="pl-4 w-4/5">
             <Text className="text-white text-4xl">
               {selectedAnimeData.attributes.canonicalTitle}
             </Text>
@@ -72,7 +73,7 @@ const AnimeInfo = ({ route }: Props) => {
           </View>
           {/* Add to favorites */}
           <Pressable
-            className="flex-1 flex flex-row justify-end items-center pr-4"
+            className="flex-1 flex flex-row justify-end items-center pr-4 w-1/5 self-start"
             onPress={() => {
               if (color == "gray") {
                 handleFavorite();

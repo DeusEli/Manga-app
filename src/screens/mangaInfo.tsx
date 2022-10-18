@@ -1,10 +1,38 @@
-import React from "react";
-import { Text, View, SafeAreaView, Image } from "react-native";
+import React, { useState } from "react";
+import { Text, View, SafeAreaView, Image, Pressable } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import MangaVolList from "../components/manga/mangaVolList";
+import {
+  addFavoriteManga,
+  removeFavoriteManga,
+} from "../features/favoriteMangas/favoriteMangaSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { Ionicons } from "@expo/vector-icons";
 
 const MangaInfo = ({ route }) => {
   const selectedMangaData = route.params.selectedManga;
+  const [color, setColor] = useState("gray");
+  const dispatch = useDispatch();
+  const favoriteState = useSelector((state) => state.favoriteMangas);
+
+  const favoriteAlready = favoriteState.find(
+    (favorite) => favorite.id === selectedMangaData.id
+  );
+
+  if (favoriteAlready && color === "gray") {
+    setColor("red");
+    console.log("favoriteAlready");
+  }
+
+  const handleFavorite = () => {
+    setColor("red");
+    dispatch(addFavoriteManga(selectedMangaData));
+  };
+
+  const handleUnfavorite = (id: string) => {
+    setColor("gray");
+    dispatch(removeFavoriteManga(id));
+  };
 
   // console.log(route.params.selectedAnime.attributes.canonicalTitle);
   // console.log("ola");
@@ -22,15 +50,31 @@ const MangaInfo = ({ route }) => {
           /> */}
         </View>
         {/* Names */}
-        <View className="pl-4">
-          <Text className="text-white text-4xl">
-            {selectedMangaData.attributes.canonicalTitle}
-          </Text>
-          <Text className="text-slate-300 text-2xl pt-2 italic">
-            {selectedMangaData.attributes.titles.ja_jp
-              ? selectedMangaData.attributes.titles.ja_jp
-              : "No Japanese Title..."}
-          </Text>
+        <View className="flex flex-row">
+          <View className="pl-4">
+            <Text className="text-white text-4xl">
+              {selectedMangaData.attributes.canonicalTitle}
+            </Text>
+            <Text className="text-slate-300 text-2xl pt-2 italic">
+              {selectedMangaData.attributes.titles.ja_jp
+                ? selectedMangaData.attributes.titles.ja_jp
+                : "No Japanese Title..."}
+            </Text>
+          </View>
+          <Pressable
+            className="flex-1 flex flex-row justify-end items-center pr-4 w-1/5 self-start"
+            onPress={() => {
+              if (color == "gray") {
+                handleFavorite();
+              } else if (color == "red") {
+                handleUnfavorite(selectedMangaData.id);
+              }
+            }}
+          >
+            <Text>
+              <Ionicons name="heart" size={38} color={color} />
+            </Text>
+          </Pressable>
         </View>
         {/* Rating */}
         <View className="pl-4">

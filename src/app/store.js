@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import favoriteReducer from "../features/favorites/favoriteSlice";
+import favoriteAnimeReducer from "../features/favoriteAnimes/favoriteAnimeSlice";
+import favoriteMangaReducer from "../features/favoriteMangas/favoriteMangaSlice";
 
 export const store = configureStore({
   reducer: {
-    favorites: favoriteReducer,
+    favoriteAnimes: favoriteAnimeReducer,
+    favoriteMangas: favoriteMangaReducer,
   },
 });
