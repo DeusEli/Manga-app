@@ -1,3 +1,4 @@
+import { Ionicons } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView, Text, TextInput, View, FlatList } from "react-native";
 import AnimeCard from "../components/anime/animeCard";
@@ -34,10 +35,11 @@ const HomeScreen = () => {
 
   return (
     <SafeAreaView className="flex-col pt-2 h-full bg-black">
-      <View className="flex flex-row">
-        <Text className="text-white">Search</Text>
+      <View className="flex flex-row items-center pt-12">
+        <Text className="text-white text-base mr-2">Search</Text>
+        <Ionicons name="search" size={24} color="white" />
         <TextInput
-          className="border border-white flex-1 ml-2 text-white"
+          className="border border-white flex-1 ml-2 text-white rounded-xl pl-2"
           onChangeText={(text) => searchFilterFunction(text)}
           placeholder="Search"
         ></TextInput>

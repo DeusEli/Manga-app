@@ -9,7 +9,7 @@ const FavoritesScreen = () => {
 
   return (
     <View className="flex-col h-full pt-2 bg-black">
-      <View className="flex flex-col items-center">
+      <View className="flex flex-col items-center pt-12">
         <Text className="text-white text-2xl pb-4">FAVORITE ANIMES:</Text>
         <FlatList
           className="w-full"

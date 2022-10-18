@@ -11,12 +11,34 @@ import HomeScreen from "./src/screens/home";
 
 const infoStackNavigator = createNativeStackNavigator();
 
-function MyStack() {
+function MyHomeStack() {
   return (
     <infoStackNavigator.Navigator>
       <infoStackNavigator.Screen
         name="Home"
         component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <infoStackNavigator.Screen
+        name="AnimeInfo"
+        component={AnimeInfo}
+        options={{ headerShown: false }}
+      />
+      <infoStackNavigator.Screen
+        name="MangaInfo"
+        component={MangaInfo}
+        options={{ headerShown: false }}
+      />
+    </infoStackNavigator.Navigator>
+  );
+}
+
+function MyFavStack() {
+  return (
+    <infoStackNavigator.Navigator>
+      <infoStackNavigator.Screen
+        name="Favorites"
+        component={FavoritesScreen}
         options={{ headerShown: false }}
       />
       <infoStackNavigator.Screen
@@ -43,20 +65,22 @@ function MyTabs() {
     >
       <tab.Screen
         name="HomeScreen"
-        component={MyStack}
+        component={MyHomeStack}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home" size={size} color={color} />
           ),
+          headerShown: false,
         }}
       />
       <tab.Screen
-        name="Favorites"
-        component={FavoritesScreen}
+        name="FavoritesScreen"
+        component={MyFavStack}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="star" size={size} color={color} />
           ),
+          headerShown: false,
         }}
       />
     </tab.Navigator>
