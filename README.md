@@ -19,6 +19,7 @@ In this example, I'm consuming a manga API (Kitsu) using React Native and some T
 - TypeScript
 - JavaSctipt
 - React Native Framework
+- Kitsu API
 - Fetch (used to consume the API)
 ## YouTube video (spanish):
 ### [LINK](https://www.youtube.com/watch?v=tvAVt8YADDg)
